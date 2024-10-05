@@ -12,20 +12,15 @@ public class ProductSpecification {
 
             String name = productSearch.name();
             String sku = productSearch.sku();
-            String size = productSearch.size();
             BigDecimal price = productSearch.price();
             Long categoryId = productSearch.categoryId();
 
             if (name != null && !name.isEmpty()) {
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(root.get("name"), "%" + name + "%"));
+                predicate = criteriaBuilder.and(predicate, criteriaBuilder.like(criteriaBuilder.lower(root.get("name")), "%" + name.toLowerCase() + "%"));
             }
 
             if (sku != null && !sku.isEmpty()) {
                 predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("sku"), sku));
-            }
-
-            if (size != null && !size.isEmpty()) {
-                predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.get("size"), size));
             }
 
             if (price != null) {

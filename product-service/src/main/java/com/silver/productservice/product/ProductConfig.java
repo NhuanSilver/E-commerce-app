@@ -16,30 +16,169 @@ public class ProductConfig {
         return args -> {
             List<Product> products = new ArrayList<>();
 
-            products.add(new Product(null, "Product 1", "SKU001", new BigDecimal("10.99"), 100, "Description of product 1", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 2", "SKU002", new BigDecimal("15.49"), 50, "Description of product 2", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 3", "SKU003", new BigDecimal("25.99"), 75, "Description of product 3", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 4", "SKU004", new BigDecimal("8.99"), 10, "Description of product 4", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 5", "SKU005", new BigDecimal("19.99"), 120, "Description of product 5", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 6", "SKU006", new BigDecimal("11.59"), 0, "Description of product 6", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 7", "SKU007", new BigDecimal("14.99"), 60, "Description of product 7", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 8", "SKU008", new BigDecimal("22.49"), 30, "Description of product 8", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 9", "SKU009", new BigDecimal("5.99"), 90, "Description of product 9", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 10", "SKU010", new BigDecimal("16.49"), 20, "Description of product 10", Status.IN_STOCK, null, null));
+            products.add(Product.builder()
+                    .name("Product 1")
+                    .sku("SKU001")
+                    .price(new BigDecimal("10.99"))
+                    .description("Description of product 1")
+                    .status(Status.IN_STOCK)
+                    .build());
 
-            products.add(new Product(null, "Product 11", "SKU011", new BigDecimal("32.99"), 70, "Description of product 11", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 12", "SKU012", new BigDecimal("44.99"), 85, "Description of product 12", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 13", "SKU013", new BigDecimal("12.99"), 95, "Description of product 13", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 14", "SKU014", new BigDecimal("17.99"), 40, "Description of product 14", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 15", "SKU015", new BigDecimal("6.49"), 0, "Description of product 15", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 16", "SKU016", new BigDecimal("9.99"), 60, "Description of product 16", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 17", "SKU017", new BigDecimal("28.99"), 0, "Description of product 17", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 18", "SKU018", new BigDecimal("31.99"), 25, "Description of product 18", Status.IN_STOCK, null, null));
-            products.add(new Product(null, "Product 19", "SKU019", new BigDecimal("7.49"), 90, "Description of product 19", Status.OUT_OF_STOCK, null, null));
-            products.add(new Product(null, "Product 20", "SKU020", new BigDecimal("18.49"), 110, "Description of product 20", Status.IN_STOCK, null, null));
+            products.add(Product.builder()
+                    .name("Product 2")
+                    .sku("SKU002")
+                    .price(new BigDecimal("15.49"))
+                    .description("Description of product 2")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
 
-            // Lưu danh sách sản phẩm vào cơ sở dữ liệu
+            products.add(Product.builder()
+                    .name("Product 3")
+                    .sku("SKU003")
+                    .price(new BigDecimal("25.99"))
+                    .description("Description of product 3")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 4")
+                    .sku("SKU004")
+                    .price(new BigDecimal("8.99"))
+                    .description("Description of product 4")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 5")
+                    .sku("SKU005")
+                    .price(new BigDecimal("19.99"))
+                    .description("Description of product 5")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 6")
+                    .sku("SKU006")
+                    .price(new BigDecimal("11.59"))
+                    .description("Description of product 6")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 7")
+                    .sku("SKU007")
+                    .price(new BigDecimal("14.99"))
+                    .description("Description of product 7")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 8")
+                    .sku("SKU008")
+                    .price(new BigDecimal("22.49"))
+                    .description("Description of product 8")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 9")
+                    .sku("SKU009")
+                    .price(new BigDecimal("5.99"))
+                    .description("Description of product 9")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 10")
+                    .sku("SKU010")
+                    .price(new BigDecimal("16.49"))
+                    .description("Description of product 10")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            // Tiếp tục thêm các sản phẩm khác
+            products.add(Product.builder()
+                    .name("Product 11")
+                    .sku("SKU011")
+                    .price(new BigDecimal("32.99"))
+                    .description("Description of product 11")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 12")
+                    .sku("SKU012")
+                    .price(new BigDecimal("44.99"))
+                    .description("Description of product 12")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 13")
+                    .sku("SKU013")
+                    .price(new BigDecimal("12.99"))
+                    .description("Description of product 13")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 14")
+                    .sku("SKU014")
+                    .price(new BigDecimal("17.99"))
+                    .description("Description of product 14")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 15")
+                    .sku("SKU015")
+                    .price(new BigDecimal("6.49"))
+                    .description("Description of product 15")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 16")
+                    .sku("SKU016")
+                    .price(new BigDecimal("9.99"))
+                    .description("Description of product 16")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 17")
+                    .sku("SKU017")
+                    .price(new BigDecimal("28.99"))
+                    .description("Description of product 17")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 18")
+                    .sku("SKU018")
+                    .price(new BigDecimal("31.99"))
+                    .description("Description of product 18")
+                    .status(Status.IN_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 19")
+                    .sku("SKU019")
+                    .price(new BigDecimal("7.49"))
+                    .description("Description of product 19")
+                    .status(Status.OUT_OF_STOCK)
+                    .build());
+
+            products.add(Product.builder()
+                    .name("Product 20")
+                    .sku("SKU020")
+                    .price(new BigDecimal("18.49"))
+                    .description("Description of product 20")
+                    .status(Status.IN_STOCK)
+                    .build());
+
             productRepository.saveAll(products);
         };
     }
+
 }

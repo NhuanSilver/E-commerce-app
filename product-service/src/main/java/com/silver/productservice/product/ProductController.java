@@ -1,10 +1,8 @@
 package com.silver.productservice.product;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,5 +15,21 @@ public class ProductController {
     @GetMapping
     public List<ProductResponse> searchProducts(ProductSearch productSearch) {
         return this.productService.searchProduct(productSearch);
+    }
+
+    @GetMapping("/{id}")
+    public ProductResponse getProductById(@PathVariable Long id) {
+        return this.productService.getProductById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public ProductResponse create(@RequestBody ProductCreateRequest request) {
+        return this.productService.createProduct(request);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        this.productService.deleteProduct(id);
     }
 }

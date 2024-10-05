@@ -1,5 +1,6 @@
 package com.silver.productservice.product;
 
+import com.silver.productservice.category.Category;
 import com.silver.productservice.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
@@ -14,19 +15,22 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "product_seq", sequenceName = "product_id_seq", allocationSize = 1)
     private Long id;
     private String name;
     private String sku;
     private BigDecimal price;
-    private int stock;
     private String description;
 
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @ManyToOne
+    private Category category;
     @CreationTimestamp
     private Timestamp createdAt;
 

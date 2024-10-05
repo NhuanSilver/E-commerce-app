@@ -7,6 +7,7 @@ public class ProductMapper {
     public ProductResponse toResponse(Product product) {
         return ProductResponse
                 .builder()
+                .id(product.getId())
                 .categoryId(1L)
                 .name(product.getName())
                 .description(product.getDescription())
