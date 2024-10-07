@@ -1,6 +1,8 @@
-package com.silver.productservice.product;
+package com.silver.productservice.config;
 
 import com.silver.productservice.enums.Status;
+import com.silver.productservice.product.Product;
+import com.silver.productservice.product.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
