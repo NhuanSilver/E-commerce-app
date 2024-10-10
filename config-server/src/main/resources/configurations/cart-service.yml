@@ -6,8 +6,8 @@ spring:
       host: localhost
       port: 27017
       database: cart
-      username: SILVER
-      password: SILVER
+      username: silver
+      password: silver
       authentication-database: admin
 eureka:
   client:

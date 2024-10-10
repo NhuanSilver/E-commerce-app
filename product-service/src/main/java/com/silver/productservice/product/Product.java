@@ -31,6 +31,7 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
     @CreationTimestamp
     private Timestamp createdAt;
 

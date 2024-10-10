@@ -2,6 +2,7 @@ package com.silver.cartservice;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -16,7 +17,9 @@ import java.util.List;
 public class Cart {
     @Id
     private String id;
-    private Long customerId;
+
+    @Indexed(unique = true)
+    private String customerId;
     private List<CartItem> items = new ArrayList<>();
 
 }
