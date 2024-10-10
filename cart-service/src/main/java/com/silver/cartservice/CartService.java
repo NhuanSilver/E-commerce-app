@@ -75,4 +75,13 @@ public class CartService {
         if(!this.cartRepository.existsById(id)) throw new RuntimeException();
         this.cartRepository.deleteById(id);
     }
+
+    public void deleteCartItem(String id, Long productId) {
+        Cart cart = this.cartRepository.findById(id).orElseThrow();
+        CartItem item = cart.getItems().stream()
+                .filter(cartItem -> cartItem.getProductId().equals(productId))
+                .findFirst().orElseThrow();
+        cart.getItems().remove(item);
+        cartRepository.save(cart);
+    }
 }
