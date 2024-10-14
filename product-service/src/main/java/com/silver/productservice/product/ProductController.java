@@ -23,16 +23,4 @@ public class ProductController {
         return this.productService.getProductById(id);
     }
 
-    @PreAuthorize("hasRole('client_customer')")
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    public ProductResponse create(@RequestBody ProductCreateRequest request) {
-        return this.productService.createProduct(request);
-    }
-
-    @PreAuthorize("hasRole('client_customer2')")
-    @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id) {
-        this.productService.deleteProduct(id);
-    }
 }

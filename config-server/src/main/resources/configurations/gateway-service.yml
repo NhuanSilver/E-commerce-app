@@ -1,5 +1,5 @@
 server:
-  port: 8222
+  port: 8000
 spring:
   cloud:
     gateway:
@@ -8,9 +8,10 @@ spring:
           enabled: true
       routes:
         - id: cart-service
-          uri: lb:http://CART-SERVICE
+          uri: lb://CART-SERVICE
           predicates:
             - Path=/api/v1/carts/**
         - id: product-service
-          uri: lb:http://PRODUCT-SERVICE
-            - Path=/api/v1/product/**
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/products/**, /admin/api/v1/products/**

@@ -11,6 +11,7 @@
         <module name="product-service" />
         <module name="config-server" />
         <module name="cart-service" />
+        <module name="order-service" />
         <module name="discovery" />
       </profile>
     </annotationProcessing>
@@ -21,6 +22,7 @@
       <module name="cart-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="discovery" options="-parameters" />
+      <module name="order-service" options="-parameters" />
       <module name="product-service" options="-parameters" />
     </option>
   </component>
