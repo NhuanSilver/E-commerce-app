@@ -1,9 +1,7 @@
-package com.silver.orderservice;
+package com.silver.orderservice.orderline;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.silver.orderservice.order.Order;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -14,6 +12,8 @@ import lombok.*;
 @Builder
 public class OrderLine {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "product_seq", sequenceName = "product_id_seq", allocationSize = 1)
     private Long id;
     private Long productId;
     private int quantity;
