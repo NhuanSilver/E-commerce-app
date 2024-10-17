@@ -1,4 +1,4 @@
-package com.silver.cartservice;
+package com.silver.cartservice.cartitem;
 
 import lombok.*;
 

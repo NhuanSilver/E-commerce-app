@@ -1,4 +1,4 @@
-package com.silver.cartservice;
+package com.silver.cartservice.cart;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

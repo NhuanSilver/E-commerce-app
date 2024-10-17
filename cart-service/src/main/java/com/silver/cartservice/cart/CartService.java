@@ -1,10 +1,12 @@
-package com.silver.cartservice;
+package com.silver.cartservice.cart;
 
+import com.silver.cartservice.cartitem.CartItem;
+import com.silver.cartservice.feign.ProductFeign;
+import com.silver.cartservice.product.ProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -12,18 +14,24 @@ import java.util.Optional;
 public class CartService {
 
     private final CartRepository cartRepository;
+    private final ProductFeign productFeign;
 
     public Cart getCartByCustomerId(String customerId) {
         return this.cartRepository.findByCustomerId(customerId).orElseThrow();
     }
 
     public Cart addToCart(AddToCartRequest addToCartRequest) {
+        //Validate product
+        ProductResponse productResponse = productFeign.getProductById(addToCartRequest.productId());
+        if (productResponse == null) throw new RuntimeException();
+
         String customerId = addToCartRequest.customerId();
         Cart cart = cartRepository.findByCustomerId(customerId).orElse(Cart.builder()
                         .customerId(customerId)
                         .items(new ArrayList<>())
                         .build()
         );
+
         if (cart.getItems().isEmpty()) {
             CartItem item = CartItem.builder()
                     .productId(addToCartRequest.productId())

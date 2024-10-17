@@ -11,7 +11,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderService {
     private final OrderRepository orderRepository;
-    private final OrderLineService orderLineService;
     private final OrderMapper orderMapper;
 
     public OrderResponse getOrderById(Long id) {
@@ -32,8 +31,6 @@ public class OrderService {
                                                 .productId(lineRequest.productId())
                                                 .quantity(lineRequest.quantity())
                                                 .build()).toList();
-//        orderLineService.saveAll(orderLines);
-
         order.setOrderLines(orderLines);
         return orderMapper.toDto(orderRepository.save(order));
     }

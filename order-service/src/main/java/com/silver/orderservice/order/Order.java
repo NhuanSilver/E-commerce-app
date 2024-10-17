@@ -1,7 +1,6 @@
 package com.silver.orderservice.order;
 
 import com.silver.orderservice.orderline.OrderLine;
-import com.silver.orderservice.Payment;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

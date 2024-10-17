@@ -1,6 +1,5 @@
 package com.silver.orderservice.order;
 
-import com.silver.orderservice.Payment;
 import com.silver.orderservice.orderline.OrderLineDto;
 
 import java.math.BigDecimal;

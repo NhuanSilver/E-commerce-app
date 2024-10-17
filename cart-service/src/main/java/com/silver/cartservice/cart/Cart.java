@@ -1,5 +1,6 @@
-package com.silver.cartservice;
+package com.silver.cartservice.cart;
 
+import com.silver.cartservice.cartitem.CartItem;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;

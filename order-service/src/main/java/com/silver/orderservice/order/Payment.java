@@ -1,4 +1,4 @@
-package com.silver.orderservice;
+package com.silver.orderservice.order;
 
 public enum Payment {
     CREDIT,
