@@ -20,5 +20,8 @@ public class ProductController {
     public ProductResponse getProductById(@PathVariable Long id) {
         return this.productService.getProductById(id);
     }
-
+    @PostMapping("/purchase")
+    List<ProductPurchaseResponse> purchaseProducts(@RequestBody List<PurchaseProduct> request) {
+        return productService.purchaseProducts(request);
+    }
 }

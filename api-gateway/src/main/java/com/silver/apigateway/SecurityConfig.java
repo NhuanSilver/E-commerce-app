@@ -23,6 +23,7 @@ public class SecurityConfig {
                         .pathMatchers("/eureka/**").permitAll()
                         .pathMatchers("/api/v1/carts/**").hasRole("CUSTOMER")
                         .pathMatchers("/admin/api/v1/products").hasRole("ADMIN")
+                        .pathMatchers("/orders/**").hasRole("CUSTOMER")
                         .anyExchange().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(jwtConverter)));
         return httpSecurity.build();

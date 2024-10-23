@@ -39,4 +39,16 @@ public class ProductService {
         if (!this.productRepository.existsById(id)) throw new RuntimeException();
         this.productRepository.deleteById(id);
     }
+
+    public List<ProductPurchaseResponse> purchaseProducts(List<PurchaseProduct> request) {
+        List<Long> productIds = request.stream().map(PurchaseProduct::productId).toList();
+        return this.productRepository.findAllByIdInOrderById(productIds).stream()
+                .map(product -> ProductPurchaseResponse.builder()
+                        .name(product.getName())
+                        .id(product.getId())
+                        .price(product.getPrice())
+                        .quantity(5)
+                        .build()
+                ).toList();
+    }
 }
