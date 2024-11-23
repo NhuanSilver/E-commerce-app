@@ -25,7 +25,7 @@ public class Product {
     private String sku;
     private BigDecimal price;
     private String description;
-
+    private int quantity;
     @Enumerated(EnumType.STRING)
     private Status status;
 

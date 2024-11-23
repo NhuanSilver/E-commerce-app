@@ -5,7 +5,7 @@ import com.silver.orderservice.product.PurchaseProduct;
 import java.math.BigDecimal;
 import java.util.List;
 
-public record OrderCreateRequest(String customerId,
+public record OrderCreateRequest(
                                  BigDecimal totalAmount,
                                  Payment paymentMethod,
                                  List<PurchaseProduct> purchasedProducts

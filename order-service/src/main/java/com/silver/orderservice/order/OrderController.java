@@ -15,7 +15,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderResponse createOrder(@RequestBody OrderCreateRequest request) {
-        return orderService.createOrder(request);
+    public OrderResponse createOrder(@RequestBody OrderCreateRequest request, @RequestHeader("Authorization") String bearerToken) {
+        return orderService.createOrder(request, bearerToken);
     }
 }

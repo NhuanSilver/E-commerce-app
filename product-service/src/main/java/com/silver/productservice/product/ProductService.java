@@ -41,14 +41,14 @@ public class ProductService {
     }
 
     public List<ProductPurchaseResponse> purchaseProducts(List<PurchaseProduct> request) {
-        List<Long> productIds = request.stream().map(PurchaseProduct::productId).toList();
-        return this.productRepository.findAllByIdInOrderById(productIds).stream()
-                .map(product -> ProductPurchaseResponse.builder()
-                        .name(product.getName())
+        return request.stream().map(purchaseProduct -> {
+                Product product = productRepository.findById(purchaseProduct.productId()).orElseThrow();
+//                if (purchaseProduct.quantity() > product.getQuantity()) throw new RuntimeException("Hết rồi bạn ơi");
+                return ProductPurchaseResponse.builder().name(product.getName())
                         .id(product.getId())
                         .price(product.getPrice())
-                        .quantity(5)
-                        .build()
-                ).toList();
+                        .quantity(purchaseProduct.quantity())
+                        .build();
+                }).toList();
     }
 }

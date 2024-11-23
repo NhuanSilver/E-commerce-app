@@ -29,9 +29,10 @@ public class NotificationConsumer {
                         .orderConfirmation(orderConfirmation)
                         .build()
         );
+
         emailService.sendOrderConfirmationEmail(
                 "test@mail.com",
-                orderConfirmation.customerId(),
+                orderConfirmation.customerName(),
                 orderConfirmation.totalAmount(),
                 orderConfirmation.products()
         );

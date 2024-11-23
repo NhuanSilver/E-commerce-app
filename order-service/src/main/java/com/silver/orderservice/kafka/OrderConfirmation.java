@@ -9,7 +9,7 @@ import java.util.List;
 
 @Builder
 public record OrderConfirmation(Long id,
-                                String customerId,
+                                String customerName,
                                 Payment paymentMethod,
                                 BigDecimal totalAmount,
                                 List<ProductPurchaseResponse> products) {
