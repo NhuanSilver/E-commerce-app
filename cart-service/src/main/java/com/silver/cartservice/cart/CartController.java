@@ -3,6 +3,8 @@ package com.silver.cartservice.cart;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/carts")
 @RequiredArgsConstructor
@@ -15,8 +17,8 @@ public class CartController {
     }
 
     @PostMapping
-    public Cart createCart(@RequestBody AddToCartRequest addToCartRequest) {
-        return this.cartService.addToCart(addToCartRequest);
+    public Cart createCart(@RequestBody List<AddToCartRequest> request) {
+        return this.cartService.addToCart(request);
     }
 
     @PostMapping("/{id}/increase/{productId}/{quantity}")

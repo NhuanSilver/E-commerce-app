@@ -1,4 +1,4 @@
-package com.silver.orderservice.product;
+package com.silver.cartservice.product;
 
 import java.math.BigDecimal;
 

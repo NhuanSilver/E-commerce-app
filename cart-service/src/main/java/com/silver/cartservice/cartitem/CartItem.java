@@ -9,5 +9,5 @@ import lombok.*;
 @Builder
 public class CartItem {
     private int quantity;
-    private Long productId;
+    private Long variantId;
 }

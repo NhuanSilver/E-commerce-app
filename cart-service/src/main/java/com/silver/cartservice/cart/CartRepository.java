@@ -8,6 +8,4 @@ import java.util.Optional;
 @Repository
 public interface CartRepository extends MongoRepository<Cart, String> {
     Optional<Cart> findByCustomerId(String customerId);
-
-    boolean existsByCustomerId(String customerId);
 }

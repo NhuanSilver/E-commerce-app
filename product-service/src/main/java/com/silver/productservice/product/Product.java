@@ -2,6 +2,7 @@ package com.silver.productservice.product;
 
 import com.silver.productservice.category.Category;
 import com.silver.productservice.enums.Status;
+import com.silver.productservice.product.variant.ProductVariant;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,15 +24,16 @@ public class Product {
     @SequenceGenerator(name = "product_seq", sequenceName = "product_id_seq", allocationSize = 1)
     private Long id;
     private String name;
-    private String sku;
     private BigDecimal price;
     private String description;
-    private int quantity;
     @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ProductVariant> variants;
 
     @CreationTimestamp
     private Timestamp createdAt;

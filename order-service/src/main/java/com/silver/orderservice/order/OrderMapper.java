@@ -12,7 +12,7 @@ public class OrderMapper {
                 .paymentMethod(order.getMethod())
                 .totalAmount(order.getTotalAmount())
                 .lines(order.getOrderLines().stream().map(orderLine -> OrderLineDto.builder()
-                                .productId(orderLine.getProductId())
+                                .variantId(orderLine.getVariantId())
                                 .quantity(orderLine.getQuantity()).build()).toList())
                 .build();
     }

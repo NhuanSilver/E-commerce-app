@@ -18,7 +18,6 @@ import java.util.List;
 public class Cart {
     @Id
     private String id;
-
     @Indexed(unique = true)
     private String customerId;
     private List<CartItem> items = new ArrayList<>();

@@ -53,6 +53,7 @@ public class JwtConverter implements Converter<Jwt, Mono<AbstractAuthenticationT
     }
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
+        System.out.println("khsgkklsegkj");
         Map<String, Object> resourceAccess;
         Map<String, Object> resource;
         Collection<String> resourceRoles;
@@ -67,6 +68,7 @@ public class JwtConverter implements Converter<Jwt, Mono<AbstractAuthenticationT
         resource = (Map<String, Object>) resourceAccess.get(resourceId);
 
         resourceRoles = (Collection<String>) resource.get("roles");
+        System.out.println(resourceRoles.toString());
         return resourceRoles
                 .stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role))

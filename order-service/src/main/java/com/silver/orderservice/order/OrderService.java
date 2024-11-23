@@ -41,7 +41,7 @@ public class OrderService {
 
         List<ProductPurchaseResponse> purchaseProducts = productFeign.purchaseProducts(request.purchasedProducts());
         List<OrderLine> orderLines = purchaseProducts.stream().map(purchaseProduct ->  OrderLine.builder()
-                                            .productId(purchaseProduct.id())
+                                            .variantId(purchaseProduct.variantId())
                                             .quantity(purchaseProduct.quantity())
                                             .build()).toList();
         order.setOrderLines(orderLines);

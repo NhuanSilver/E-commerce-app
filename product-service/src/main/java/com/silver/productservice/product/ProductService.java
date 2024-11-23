@@ -1,5 +1,8 @@
 package com.silver.productservice.product;
 
+import com.silver.productservice.product.variant.ProductVariant;
+import com.silver.productservice.product.variant.ProductVariantRepository;
+import com.silver.productservice.product.variant.ProductVariantRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProductService {
     private final ProductRepository productRepository;
+    private final ProductVariantRepository variantRepository;
     private final ProductMapper productMapper;
 
     public List<ProductResponse> searchProduct(ProductSearch productSearch){
@@ -28,9 +32,16 @@ public class ProductService {
                 .name(request.name())
                 .price(request.price())
                 .description(request.description())
-                .sku(request.sku())
                 .build();
-        log.info(product.getDescription());
+        List<ProductVariant> variants = request.variantRequests().stream().map(variantRequest ->
+                ProductVariant.builder()
+                        .sku(variantRequest.sku())
+                        .color(variantRequest.color())
+                        .quantity(variantRequest.quantity())
+                        .product(product)
+                        .build())
+                .toList();
+        product.setVariants(variants);
         return this.productMapper.toResponse(this.productRepository.save(product));
     }
 
@@ -41,13 +52,19 @@ public class ProductService {
     }
 
     public List<ProductPurchaseResponse> purchaseProducts(List<PurchaseProduct> request) {
+
         return request.stream().map(purchaseProduct -> {
-                Product product = productRepository.findById(purchaseProduct.productId()).orElseThrow();
-//                if (purchaseProduct.quantity() > product.getQuantity()) throw new RuntimeException("Hết rồi bạn ơi");
+                ProductVariant variant = variantRepository.findById(purchaseProduct.variantId()).orElseThrow();
+                Product product = variant.getProduct();
+
                 return ProductPurchaseResponse.builder().name(product.getName())
-                        .id(product.getId())
+                        .variantId(variant.getId())
                         .price(product.getPrice())
-                        .quantity(purchaseProduct.quantity())
+                        .size(variant.getSize())
+                        .color(variant.getColor())
+                        .sku(variant.getSku())
+                        .quantity(variant.getQuantity())
+                        .description(product.getDescription())
                         .build();
                 }).toList();
     }

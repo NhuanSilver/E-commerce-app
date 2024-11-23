@@ -11,5 +11,5 @@ spring:
 jwt:
     auth:
         converter:
-            resource-id: ms-keycloack
+            resource-id: ms-keycloak
             principle-attribute: preferred_username

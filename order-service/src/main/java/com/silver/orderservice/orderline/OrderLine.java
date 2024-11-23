@@ -15,7 +15,7 @@ public class OrderLine {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "product_seq", sequenceName = "product_id_seq", allocationSize = 1)
     private Long id;
-    private Long productId;
+    private Long variantId;
     private int quantity;
     @ManyToOne
     @JoinColumn(name = "order_id")

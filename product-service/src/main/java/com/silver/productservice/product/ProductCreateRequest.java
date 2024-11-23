@@ -1,6 +1,9 @@
 package com.silver.productservice.product;
 
-import java.math.BigDecimal;
+import com.silver.productservice.product.variant.ProductVariantRequest;
 
-public record ProductCreateRequest(String name, BigDecimal price, String description, String sku) {
+import java.math.BigDecimal;
+import java.util.List;
+
+public record ProductCreateRequest(String name, BigDecimal price, String description, List<ProductVariantRequest> variantRequests) {
 }
