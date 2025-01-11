@@ -1,5 +1,6 @@
 package com.silver.productservice.product.variant;
 
+import com.silver.productservice.image.Image;
 import com.silver.productservice.product.Product;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,5 +22,6 @@ public class ProductVariant {
     private String sku;
     @ManyToOne
     private Product product;
-
+    @ManyToOne
+    private Image image;
 }

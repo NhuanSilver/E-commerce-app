@@ -1,5 +1,7 @@
 package com.silver.productservice.product;
 
+import com.silver.productservice.product.input.ProductCreateRequest;
+import com.silver.productservice.product.output.ProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

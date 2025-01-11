@@ -2,6 +2,7 @@ package com.silver.productservice.product;
 
 import com.silver.productservice.category.Category;
 import com.silver.productservice.enums.Status;
+import com.silver.productservice.image.Image;
 import com.silver.productservice.product.variant.ProductVariant;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,11 +27,15 @@ public class Product {
     private String name;
     private BigDecimal price;
     private String description;
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<Image> images;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductVariant> variants;

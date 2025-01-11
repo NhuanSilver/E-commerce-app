@@ -53,7 +53,6 @@ public class JwtConverter implements Converter<Jwt, Mono<AbstractAuthenticationT
     }
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(Jwt jwt) {
-        System.out.println("khsgkklsegkj");
         Map<String, Object> resourceAccess;
         Map<String, Object> resource;
         Collection<String> resourceRoles;

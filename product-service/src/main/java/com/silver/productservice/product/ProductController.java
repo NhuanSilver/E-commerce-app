@@ -1,5 +1,8 @@
 package com.silver.productservice.product;
 
+import com.silver.productservice.product.input.ProductCreateRequest;
+import com.silver.productservice.product.output.ProductPurchaseResponse;
+import com.silver.productservice.product.output.ProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,5 +26,10 @@ public class ProductController {
     @PostMapping("/purchase")
     List<ProductPurchaseResponse> purchaseProducts(@RequestBody List<PurchaseProduct> request) {
         return productService.purchaseProducts(request);
+    }
+
+    @PostMapping
+    public ProductResponse createProduct(@RequestBody ProductCreateRequest request) {
+        return productService.createProduct(request);
     }
 }

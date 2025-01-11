@@ -1,4 +1,4 @@
-package com.silver.productservice.product;
+package com.silver.productservice.product.output;
 
 import lombok.Builder;
 
