@@ -73,7 +73,15 @@ public class ProductService {
             ProductVariant variant = variantRepository.findById(purchaseProduct.variantId()).orElseThrow();
             Product product = variant.getProduct();
 
-            return ProductPurchaseResponse.builder().name(product.getName()).variantId(variant.getId()).price(product.getPrice()).size(variant.getSize()).color(variant.getColor()).sku(variant.getSku()).quantity(variant.getQuantity()).description(product.getDescription()).build();
+            return ProductPurchaseResponse.builder()
+                    .name(product.getName())
+                    .variantId(variant.getId())
+                    .price(product.getPrice())
+                    .size(variant.getSize())
+                    .color(variant.getColor())
+                    .sku(variant.getSku())
+                    .quantity(variant.getQuantity()).description(product.getDescription())
+                    .build();
         }).toList();
     }
 }
